@@ -1,0 +1,20 @@
+{
+    "rewrites": [
+        {
+            "source": "/:path*",
+            "destination": "/apps/web-main/:path*"
+        },
+        {
+            "source": "/store/:path*",
+            "destination": "/apps/web-store/:path*"
+        },
+        {
+            "source": "/social/:path*",
+            "destination": "/apps/web-social/:path*"
+        },
+        {
+            "source": "/org/:path*",
+            "destination": "/apps/web-org/:path*"
+        }
+    ]
+}
