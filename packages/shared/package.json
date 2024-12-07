@@ -21,8 +21,8 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "catalog:dev-deps",
+    "@types/react": "catalog:react19",
     "eslint": "catalog:dev-deps",
-    "typescript": "catalog:dev-deps",
-    "@types/react": "catalog:react19"
+    "typescript": "catalog:dev-deps"
   }
 }
