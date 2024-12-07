@@ -1,0 +1,9 @@
+{
+  "buildCommand": "pnpm --workspace-root exec turbo --no-daemon --filter auth build --env-mode loose",
+  "installCommand": "node -v && pnpm --workspace-root --filter auth... install --config.dedupe-peer-dependents=false",
+  "build": {
+    "env": {
+      "ENABLE_EXPERIMENTAL_COREPACK": "1"
+    }
+  }
+}

@@ -12,7 +12,9 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@clerk/nextjs": "catalog:next15",
     "@repo/ui": "workspace:*",
+    "@repo/shared": "workspace:*",
     "@t3-oss/env-nextjs": "catalog:deps",
     "next": "catalog:next15",
     "react": "catalog:react19",

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 // eslint-disable-next-line node/no-process-env
-const { ORG_URL, SOCIAL_URL } = process.env;
+const { ORG_URL, SOCIAL_URL, AUTH_URL } = process.env;
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -21,6 +21,14 @@ const nextConfig: NextConfig = {
       {
         source: "/social/:path*",
         destination: `${SOCIAL_URL}/social/:path*`,
+      },
+      {
+        source: "/auth",
+        destination: `${AUTH_URL}/auth`,
+      },
+      {
+        source: "/auth/:path*",
+        destination: `${AUTH_URL}/auth/:path*`,
       },
     ];
   },

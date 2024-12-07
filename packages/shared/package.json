@@ -1,0 +1,28 @@
+{
+  "name": "@repo/shared",
+  "exports": {
+    "./auth-middleware": "./src/auth-middleware.ts",
+    "./app-providers": "./src/app-providers.tsx"
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "check-types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "next": "catalog:next15",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19"
+  },
+  "dependencies": {
+    "@clerk/localizations": "3.8.0",
+    "@clerk/nextjs": "catalog:next15"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:dev-deps",
+    "eslint": "catalog:dev-deps",
+    "typescript": "catalog:dev-deps",
+    "@types/react": "catalog:react19"
+  }
+}

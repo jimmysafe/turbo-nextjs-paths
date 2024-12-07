@@ -10,6 +10,7 @@ catalogs:
     "@types/react-dom": ^19
   next15:
     "next": 15.0.4
+    "@clerk/nextjs": 6.8.0
   deps:
     lucide-react: ^0.451.0
     "@t3-oss/env-nextjs": ^0.11.1

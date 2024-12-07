@@ -3,7 +3,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["ORG_URL", "SOCIAL_URL"],
+      "env": ["ORG_URL", "SOCIAL_URL", "AUTH_URL"],
       "outputs": [".next/**", "!.next/cache/**"]
     }
   }

@@ -1,20 +1,19 @@
 {
-  "name": "org",
-  "type": "module",
+  "name": "auth",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "next build",
     "clean": "rm -rf .next && rm -rf .turbo",
-    "dev": "next dev -p 3001 --turbopack",
-    "start": "next start -p 3001",
+    "dev": "next dev -p 3003 --turbopack",
+    "start": "next start -p 3003",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --fix"
   },
   "dependencies": {
     "@clerk/nextjs": "catalog:next15",
-    "@repo/shared": "workspace:*",
     "@repo/ui": "workspace:*",
+    "@repo/shared": "workspace:*",
     "@t3-oss/env-nextjs": "catalog:deps",
     "next": "catalog:next15",
     "react": "catalog:react19",

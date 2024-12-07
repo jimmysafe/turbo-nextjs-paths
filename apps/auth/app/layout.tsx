@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { env } from "@/env";
 import { AppProviders } from "@repo/shared/app-providers";
-import { SignoutButton } from "@repo/ui/components/common/signout";
 import localFont from "next/font/local";
 import "@repo/ui/index.css";
 
@@ -32,7 +30,6 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <SignoutButton redirectUrl={`${env.NEXT_PUBLIC_BASE_URL}/auth/sign-in`} />
           {children}
         </body>
       </html>

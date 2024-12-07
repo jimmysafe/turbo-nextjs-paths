@@ -23,7 +23,8 @@
     "lint": "eslint . --fix"
   },
   "peerDependencies": {
-    "react": "catalog:react19"
+    "react": "catalog:react19",
+    "@clerk/nextjs": "catalog:next15"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",

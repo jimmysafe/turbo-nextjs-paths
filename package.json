@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "clean": "rm -rf .next && rm -rf .turbo",
+    "clean": "rm -rf .next && rm -rf .turbo && turbo clean",
     "lint": "turbo lint",
     "ui": "pnpm --filter @repo/ui ui",
     "prepare": "husky",
