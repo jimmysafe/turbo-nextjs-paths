@@ -6,14 +6,24 @@
     "dev": "turbo dev",
     "clean": "rm -rf .next && rm -rf .turbo",
     "lint": "turbo lint",
-    "ui": "pnpm --filter @repo/ui ui"
+    "ui": "pnpm --filter @repo/ui ui",
+    "prepare": "husky",
+    "lint-staged": "lint-staged --shell"
   },
   "devDependencies": {
     "turbo": "^2.3.3",
-    "typescript": "5.5.4"
+    "typescript": "catalog:dev-deps",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
   },
   "packageManager": "pnpm@9.12.3",
   "engines": {
-    "node": ">=18"
+    "node": ">=18",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm",
+    "pnpm": ">= 9.12.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "turbo lint --"
   }
 }

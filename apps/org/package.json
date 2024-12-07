@@ -1,8 +1,8 @@
 {
   "name": "org",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "next build",
     "clean": "rm -rf .next && rm -rf .turbo",
@@ -12,10 +12,10 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "next": "catalog:next15",
     "react": "catalog:react19",
-    "react-dom": "catalog:react19",
-    "@repo/ui": "workspace:*"
+    "react-dom": "catalog:react19"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
