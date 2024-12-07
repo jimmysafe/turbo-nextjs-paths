@@ -8,6 +8,7 @@
     "./postcss.config": "./postcss.config.mjs",
     "./tailwind.config": "./tailwind.config.ts",
     "./lib/*": "./src/lib/*.ts",
+    "./fonts": "./src/fonts/index.ts",
     "./providers/*": [
       "./src/providers/*.tsx",
       "./src/providers/*.ts"
