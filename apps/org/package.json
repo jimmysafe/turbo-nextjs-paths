@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
+    "@t3-oss/env-nextjs": "catalog:deps",
     "next": "catalog:next15",
     "react": "catalog:react19",
-    "react-dom": "catalog:react19"
+    "react-dom": "catalog:react19",
+    "zod": "catalog:deps"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
