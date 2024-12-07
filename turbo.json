@@ -22,7 +22,11 @@
             ]
         },
         "lint": {
-            "outputs": []
+            "dependsOn": [
+                "^lint"
+            ],
+            "cache": false,
+            "persistent": false
         },
         "start": {
             "cache": false

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  assetPrefix: '/social',
+  assetPrefix: "/social",
 };
 
 export default nextConfig;
