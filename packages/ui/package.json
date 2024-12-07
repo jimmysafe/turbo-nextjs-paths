@@ -1,0 +1,48 @@
+{
+  "name": "@repo/ui",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./index.css": "./src/index.css",
+    "./postcss.config": "./postcss.config.mjs",
+    "./tailwind.config": "./tailwind.config.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./providers/*": [
+      "./src/providers/*.tsx",
+      "./src/providers/*.ts"
+    ],
+    "./hooks/*": [
+      "./src/hooks/*.ts",
+      "./src/hooks/*.tsx"
+    ],
+    "./components/*": "./src/components/*.tsx"
+  },
+  "scripts": {
+    "ui": "pnpm dlx shadcn@latest",
+    "lint": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "react": "catalog:react19"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "catalog:deps",
+    "next-themes": "^0.3.0",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@types/node": "catalog:dev-deps",
+    "@types/react": "catalog:react19",
+    "autoprefixer": "catalog:dev-deps",
+    "eslint": "catalog:dev-deps",
+    "postcss": "catalog:dev-deps",
+    "postcss-load-config": "catalog:dev-deps",
+    "tailwindcss": "catalog:dev-deps",
+    "typescript": "catalog:dev-deps"
+  }
+}

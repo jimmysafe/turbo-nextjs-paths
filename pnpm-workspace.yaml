@@ -2,9 +2,6 @@ packages:
   - "apps/*"
   - "packages/*"
 
-catalog:
-  "@types/node": ^22
-
 catalogs:
   react19:
     react: ^19.0.0
@@ -22,3 +19,5 @@ catalogs:
     "@types/eslint": ^8
     tailwindcss: ^3.4.1
     postcss: ^8
+    autoprefixer: ^10
+    postcss-load-config: ^6

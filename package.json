@@ -4,8 +4,9 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "clean": "rm -rf .next && rm -rf .turbo",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "ui": "pnpm --filter @repo/ui ui"
   },
   "devDependencies": {
     "turbo": "^2.3.3",
