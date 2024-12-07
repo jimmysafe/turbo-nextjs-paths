@@ -62,6 +62,9 @@ importers:
 
   apps/main:
     dependencies:
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       next:
         specifier: catalog:next15
         version: 15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -102,6 +105,9 @@ importers:
 
   apps/org:
     dependencies:
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       next:
         specifier: catalog:next15
         version: 15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -142,6 +148,9 @@ importers:
 
   apps/social:
     dependencies:
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       next:
         specifier: catalog:next15
         version: 15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -233,6 +242,9 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
       '@types/node':
         specifier: catalog:dev-deps
         version: 22.10.1

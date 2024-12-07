@@ -14,7 +14,8 @@
   "dependencies": {
     "next": "catalog:next15",
     "react": "catalog:react19",
-    "react-dom": "catalog:react19"
+    "react-dom": "catalog:react19",
+    "@repo/ui": "workspace:*"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

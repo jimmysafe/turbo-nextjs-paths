@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/node": "catalog:dev-deps",
     "@types/react": "catalog:react19",
     "autoprefixer": "catalog:dev-deps",
