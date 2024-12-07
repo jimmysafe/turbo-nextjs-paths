@@ -1,9 +1,11 @@
 {
-  "name": "web-main",
+  "name": "main",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "clean": "rm -rf .next && rm -rf .turbo",
+    "type-check": "tsc --noEmit",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
