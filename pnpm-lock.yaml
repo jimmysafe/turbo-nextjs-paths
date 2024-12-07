@@ -366,6 +366,9 @@ importers:
       lucide-react:
         specifier: catalog:deps
         version: 0.451.0(react@19.0.0)
+      next:
+        specifier: catalog:next15
+        version: 15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
