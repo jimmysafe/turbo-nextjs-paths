@@ -38,6 +38,7 @@ export const Users: CollectionConfig = {
     read: isSelf,
     create: isAdmin,
     update: isAdmin,
+    delete: isAdmin,
   },
   auth: {
     useAPIKey: true,
