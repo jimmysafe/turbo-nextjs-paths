@@ -1,89 +1,86 @@
-import { isAdmin } from '@/access/isAdmin'
-import { isSelf } from '@/access/isSelf'
-import { clerkClient } from '@clerk/nextjs/server'
-import { revalidatePath } from 'next/cache'
-import type { CollectionBeforeChangeHook, CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload";
+import { isAdmin } from "@/access/is-admin";
+import { isSelf } from "@/access/is-self";
+import { clerkClient } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 async function createClerkUser(payloadUser: any) {
   try {
-    const client = await clerkClient()
-  
+    const client = await clerkClient();
+
     const user = await client.users.createUser({
       emailAddress: [payloadUser.email],
       password: payloadUser.password,
       skipPasswordChecks: true,
       privateMetadata: {
-        payloadKey: payloadUser.apiKey
+        payloadKey: payloadUser.apiKey,
       },
       publicMetadata: {
-        roles: payloadUser.roles
-      }
-    })
-  
-    return user.id
-  } catch (e: any) {
-    console.error(e.errors)
-    return null
+        roles: payloadUser.roles,
+      },
+    });
+
+    return user.id;
+  }
+  catch (e: any) {
+    console.error(e.errors);
+    return null;
   }
 }
 
-const beforeChangeHook: CollectionBeforeChangeHook = async (args) => {
-  console.log(args)
-  return 'asd'
-}
-
 export const Users: CollectionConfig = {
-  slug: 'users',
+  slug: "users",
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: "email",
   },
   access: {
     // create a payload user, before create we create a clerk user, after create we update the payload user with clerk id
     read: isSelf,
     create: isAdmin,
     update: isAdmin,
-    delete: isAdmin,
   },
   auth: {
-    useAPIKey: true, 
+    useAPIKey: true,
   },
   hooks: {
     beforeChange: [async (args) => {
-      if (args.operation === 'update') return args.data
-      const clerkId = await createClerkUser(args.data)
-      if(!clerkId) throw new Error('Failed to create clerk user')
+      if (args.operation === "update")
+        return args.data;
+      const clerkId = await createClerkUser(args.data);
+      if (!clerkId)
+        throw new Error("Failed to create clerk user");
       return {
         ...args.data,
-        clerkId
-      }
+        clerkId,
+      };
     }],
-    afterChange: [async (args) => {
-      revalidatePath(`/admin/collections/users/1`)
-    }]
+    afterChange: [async () => {
+      revalidatePath(`/admin/collections/users/1`);
+    }],
   },
   fields: [
     {
-      name: 'clerkId',
-      type: 'text',
+      name: "clerkId",
+      type: "text",
       saveToJWT: true,
     },
     {
-      name: 'Nome',
-      type: 'text',
+      name: "Nome",
+      type: "text",
       saveToJWT: true,
     },
     {
-      name: 'roles',
-      type: 'select',
+      name: "roles",
+      type: "select",
       saveToJWT: true,
-      defaultValue: 'admin',
+      defaultValue: "admin",
       options: [
-        { label: 'User', value: 'user' },
-        { label: 'Admin', value: 'admin' },
+        { label: "User", value: "user" },
+        { label: "Admin", value: "admin" },
       ],
-      required: true
-    }
+      required: true,
+    },
     // Email added by default
     // Add more fields as needed
   ],
-}
+};

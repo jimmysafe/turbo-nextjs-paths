@@ -26,10 +26,10 @@ export default antfu(
       "node/no-process-env": ["error"],
       "perfectionist/sort-imports": ["error"],
       "unicorn/filename-case": [
-        "error",
+        "warn",
         {
           case: "kebabCase",
-          ignore: ["README.md"],
+          ignore: ["README.md", 'importMap.js'],
         },
       ],
     },

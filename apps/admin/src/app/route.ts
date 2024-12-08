@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const GET = async (request: Request) => {
+export async function GET(request: Request) {
   const url = new URL(request.url);
-  return NextResponse.redirect(new URL('/admin', url.origin));
+  return NextResponse.redirect(new URL("/admin", url.origin));
 }
