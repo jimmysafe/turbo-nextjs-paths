@@ -24,8 +24,8 @@
     "lint": "eslint . --fix"
   },
   "peerDependencies": {
-    "next": "catalog:next15",
     "@clerk/nextjs": "catalog:next15",
+    "next": "catalog:next15",
     "react": "catalog:react19"
   },
   "dependencies": {

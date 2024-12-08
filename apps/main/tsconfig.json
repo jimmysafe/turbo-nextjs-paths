@@ -4,6 +4,7 @@
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
     "paths": {
       "@/*": ["./*"]
+      // "@payload-types": ["../admin/src/payload-types.d.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
