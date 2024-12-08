@@ -1,3 +1,4 @@
+import type { User } from "@payload-types";
 import { currentUser } from "@clerk/nextjs/server";
 import { Button } from "@repo/ui/components/ui/button";
 
@@ -9,7 +10,7 @@ export default async function Home() {
       Authorization: `users API-Key ${user?.privateMetadata.payloadKey}`,
     },
   });
-  const result = await response.json();
+  const result = await response.json() as User[];
   console.log(result);
 
   return (

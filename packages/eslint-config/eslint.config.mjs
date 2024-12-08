@@ -14,7 +14,7 @@ export default antfu(
       semi: true,
       quotes: "double",
     },
-    ignores: ["**/src/components/ui/*"],
+    ignores: ["**/src/components/ui/*", "**/payload-types.ts"],
   },
   {
     rules: {
