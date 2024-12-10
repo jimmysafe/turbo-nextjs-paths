@@ -23,11 +23,6 @@
     "zod": "catalog:deps"
   },
   "devDependencies": {
-    "@0no-co/graphqlsp": "catalog:dev-deps",
-    "@graphql-codegen/cli": "catalog:dev-deps",
-    "@graphql-codegen/schema-ast": "catalog:dev-deps",
-    "@graphql-typed-document-node/core": "catalog:dev-deps",
-    "@parcel/watcher": "catalog:dev-deps",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "catalog:dev-deps",

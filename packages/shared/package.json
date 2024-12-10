@@ -1,9 +1,12 @@
 {
   "name": "@repo/shared",
   "exports": {
-    "./auth-middleware": "./src/auth-middleware.ts",
-    "./app-providers": "./src/app-providers.tsx",
-    "./*": "./src/*.ts"
+    "./lib/*": "./src/lib/*.ts",
+    "./generated/*": "./src/generated/*.ts",
+    "./providers/*": [
+      "./src/providers/*.tsx",
+      "./src/providers/*.ts"
+    ]
   },
   "scripts": {
     "lint": "eslint . --fix",

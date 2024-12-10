@@ -10,9 +10,6 @@ const config: CodegenConfig = {
       config: {
         documentMode: "string",
       },
-      plugins: [
-        "typescript",
-      ],
     },
     "./src/generated/schema.graphql": {
       plugins: ["schema-ast"],

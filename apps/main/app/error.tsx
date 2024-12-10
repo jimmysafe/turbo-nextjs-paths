@@ -12,6 +12,7 @@ export default function Error({
       <h2>Oops! qualcosa è andato storto.</h2>
       <p>{error.message}</p>
       <button
+        type="button"
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()

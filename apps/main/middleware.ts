@@ -1,4 +1,4 @@
-import { authMiddleware } from "@repo/shared/auth-middleware";
+import { authMiddleware } from "@repo/shared/lib/auth-middleware";
 
 export default authMiddleware();
 

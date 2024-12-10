@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AppProviders } from "@repo/shared/app-providers";
+import { AppProviders } from "@repo/shared/providers/next-app";
 import { mono, sans } from "@repo/ui/fonts";
 import "@repo/ui/index.css";
 

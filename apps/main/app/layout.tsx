@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { env } from "@/env";
-import { AppProviders } from "@repo/shared/app-providers";
+import { AppProviders } from "@repo/shared/providers/next-app";
 import { SignoutButton } from "@repo/ui/components/common/signout";
 import { mono, sans } from "@repo/ui/fonts";
 import "@repo/ui/index.css";
