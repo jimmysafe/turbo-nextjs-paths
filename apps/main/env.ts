@@ -5,6 +5,7 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     NODE_ENV: z.string().optional(),
+    PAYLOAD_URL: z.string().min(1),
     ORG_URL: z.string().min(1),
     SOCIAL_URL: z.string().min(1),
     CLERK_SECRET_KEY: z.string().min(1),
@@ -24,5 +25,6 @@ export const env = createEnv({
     ORG_URL: process.env.ORG_URL,
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
     NEXT_PUBLIC_CLERK_SIGN_UP_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL,
+    PAYLOAD_URL: process.env.PAYLOAD_URL,
   },
 });

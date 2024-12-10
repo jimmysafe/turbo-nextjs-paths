@@ -6,7 +6,8 @@ export async function execute<TResult, TVariables>(
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ) {
   const user = await currentUser();
-  const response = await fetch("http://localhost:4000/api/graphql", {
+  // eslint-disable-next-line node/no-process-env
+  const response = await fetch(`${process.env.PAYLOAD_URL}/api/graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
