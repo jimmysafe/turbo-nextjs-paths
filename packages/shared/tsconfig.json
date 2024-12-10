@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@repo/shared/*": ["./src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],

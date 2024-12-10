@@ -1,6 +1,5 @@
 import type { CollectionConfig } from "payload";
 import { isAdmin } from "@/access/is-admin";
-import { isSelf } from "@/access/is-self";
 import { clerkClient } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -28,6 +27,27 @@ async function createClerkUser(payloadUser: any) {
   }
 }
 
+async function updateClerkUser(payloadUser: any) {
+  try {
+    const client = await clerkClient();
+
+    await client.users.updateUser(payloadUser.clerkId, {
+      privateMetadata: {
+        payloadKey: payloadUser.apiKey,
+      },
+      publicMetadata: {
+        roles: payloadUser.roles,
+      },
+    });
+
+    return payloadUser;
+  }
+  catch (e: any) {
+    console.error(e.errors);
+    return null;
+  }
+}
+
 export const Users: CollectionConfig = {
   slug: "users",
   admin: {
@@ -35,7 +55,7 @@ export const Users: CollectionConfig = {
   },
   access: {
     // create a payload user, before create we create a clerk user, after create we update the payload user with clerk id
-    read: isSelf,
+    read: isAdmin,
     create: isAdmin,
     update: isAdmin,
     delete: isAdmin,
@@ -45,8 +65,10 @@ export const Users: CollectionConfig = {
   },
   hooks: {
     beforeChange: [async (args) => {
-      if (args.operation === "update")
-        return args.data;
+      if (args.operation === "update") {
+        const updatedUser = await updateClerkUser(args.data);
+        return updatedUser;
+      }
       const clerkId = await createClerkUser(args.data);
       if (!clerkId)
         throw new Error("Failed to create clerk user");
@@ -64,6 +86,9 @@ export const Users: CollectionConfig = {
       name: "clerkId",
       type: "text",
       saveToJWT: true,
+      admin: {
+        readOnly: true,
+      },
     },
     {
       name: "Nome",

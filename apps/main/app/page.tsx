@@ -1,22 +1,25 @@
-import type { User } from "@payload-types";
-import { currentUser } from "@clerk/nextjs/server";
+import { graphql } from "@repo/shared/generated/index";
+import { execute } from "@repo/shared/gql-execute";
 import { Button } from "@repo/ui/components/ui/button";
 
+const GetNegozi = graphql(`
+    query GetNegozi {
+      Stores {
+        docs {
+          name
+        }
+      }
+    }
+  `);
+
 export default async function Home() {
-  const user = await currentUser();
-  console.log(user?.privateMetadata.payloadKey);
-  const response = await fetch("http://localhost:4000/api/users", {
-    headers: {
-      Authorization: `users API-Key ${user?.privateMetadata.payloadKey}`,
-    },
-  });
-  const result = await response.json() as User[];
-  console.log(result);
+  const negozi = await execute(GetNegozi);
 
   return (
     <div>
       <h1>MAIN APP</h1>
       <Button>Ciao</Button>
+      <pre>{ JSON.stringify(negozi, null, 2)}</pre>
     </div>
   );
 }

@@ -15,6 +15,8 @@ catalogs:
     lucide-react: ^0.451.0
     "@t3-oss/env-nextjs": ^0.11.1
     zod: ^3.23.8
+    "@tanstack/react-query": ^5.62.3
+    "@tanstack/react-query-devtools": ^5.62.3
   dev-deps:
     eslint: ^9.13.0
     typescript: ^5.6.3
@@ -24,3 +26,10 @@ catalogs:
     postcss: ^8
     autoprefixer: ^10
     postcss-load-config: ^6
+    "@0no-co/graphqlsp": ^1.12.16
+    "@graphql-codegen/cli": ^5.0.3
+    "@graphql-codegen/schema-ast": ^4.1.0
+    "@graphql-typed-document-node/core": ^3.2.0
+    "@parcel/watcher": ^2.5.0
+
+    

@@ -2,13 +2,15 @@
   "name": "@repo/shared",
   "exports": {
     "./auth-middleware": "./src/auth-middleware.ts",
-    "./app-providers": "./src/app-providers.tsx"
+    "./app-providers": "./src/app-providers.tsx",
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "lint": "eslint . --fix",
     "check-types": "tsc --noEmit"
   },
   "peerDependencies": {
+    "@tanstack/react-query": "catalog:deps",
     "next": "catalog:next15",
     "react": "catalog:react19",
     "react-dom": "catalog:react19"
@@ -18,8 +20,14 @@
     "@clerk/nextjs": "catalog:next15"
   },
   "devDependencies": {
+    "@0no-co/graphqlsp": "^1.12.16",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/schema-ast": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@parcel/watcher": "^2.5.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@tanstack/react-query-devtools": "catalog:deps",
     "@types/node": "catalog:dev-deps",
     "@types/react": "catalog:react19",
     "eslint": "catalog:dev-deps",
