@@ -1,28 +1,29 @@
 {
-  "name": "@repo/shared",
-  "type": "module",
+  "name": "@repo/gql",
   "exports": {
-    "./lib/*": "./src/lib/*.ts",
-    "./providers/*": [
-      "./src/providers/*.tsx",
-      "./src/providers/*.ts"
-    ]
+    "./generated/*": "./src/generated/*.ts",
+    "./exec": "./src/gql-execute.ts"
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen:watch": "graphql-codegen --config codegen.ts --watch"
   },
   "peerDependencies": {
+    "@clerk/localizations": "3.8.0",
+    "@clerk/nextjs": "catalog:next15",
     "@tanstack/react-query": "catalog:deps",
     "next": "catalog:next15",
     "react": "catalog:react19",
     "react-dom": "catalog:react19"
   },
-  "dependencies": {
-    "@clerk/localizations": "3.8.0",
-    "@clerk/nextjs": "catalog:next15"
-  },
   "devDependencies": {
+    "@0no-co/graphqlsp": "^1.12.16",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/schema-ast": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@parcel/watcher": "^2.5.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@tanstack/react-query-devtools": "catalog:deps",

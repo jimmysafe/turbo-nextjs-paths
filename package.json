@@ -7,6 +7,8 @@
     "clean": "rm -rf .next && rm -rf .turbo && turbo clean",
     "lint": "turbo lint",
     "ui": "pnpm --filter @repo/ui ui",
+    "codegen": "pnpm --filter @repo/gql codegen",
+    "codegen:watch": "pnpm --filter @repo/gql codegen:watch",
     "prepare": "husky",
     "lint-staged": "lint-staged --shell"
   },

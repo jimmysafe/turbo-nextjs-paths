@@ -1,4 +1,4 @@
-import type { TypedDocumentString } from "../generated/graphql";
+import type { TypedDocumentString } from "./generated/graphql";
 import { currentUser } from "@clerk/nextjs/server";
 
 export async function execute<TResult, TVariables>(

@@ -3835,7 +3835,7 @@ export type UsersResetPassword = {
 export type GetNegoziQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetNegoziQuery = { __typename?: 'Query', Stores?: { __typename?: 'Stores', docs?: Array<{ __typename?: 'Store', name?: string | null, address?: string | null } | null> | null } | null };
+export type GetNegoziQuery = { __typename?: 'Query', Stores?: { __typename?: 'Stores', docs?: Array<{ __typename?: 'Store', name?: string | null, address?: string | null, city?: string | null } | null> | null } | null };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -3858,6 +3858,7 @@ export const GetNegoziDocument = new TypedDocumentString(`
     docs {
       name
       address
+      city
     }
   }
 }

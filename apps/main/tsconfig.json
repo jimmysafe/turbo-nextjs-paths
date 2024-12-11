@@ -13,7 +13,7 @@
     "plugins": [
       {
         "name": "@0no-co/graphqlsp",
-        "schema": "../../packages/shared/src/generated/schema.graphql"
+        "schema": "../../packages/gql/src/generated/schema.graphql"
       },
       {
         "name": "next"

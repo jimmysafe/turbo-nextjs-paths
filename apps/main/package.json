@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "catalog:next15",
+    "@repo/gql": "workspace:*",
     "@repo/shared": "workspace:*",
     "@repo/ui": "workspace:*",
     "@t3-oss/env-nextjs": "catalog:deps",

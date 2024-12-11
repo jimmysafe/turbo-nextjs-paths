@@ -1,5 +1,5 @@
-import { graphql } from "@repo/shared/generated/index";
-import { execute } from "@repo/shared/lib/gql-execute";
+import { execute } from "@repo/gql/exec";
+import { graphql } from "@repo/gql/generated/index";
 import { Button } from "@repo/ui/components/ui/button";
 
 const GetNegozi = graphql(`
@@ -8,6 +8,7 @@ const GetNegozi = graphql(`
         docs {
           name
           address
+          city
         }
       }
     }
