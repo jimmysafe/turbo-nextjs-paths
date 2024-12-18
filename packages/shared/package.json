@@ -6,6 +6,10 @@
     "./providers/*": [
       "./src/providers/*.tsx",
       "./src/providers/*.ts"
+    ],
+    "./theme/*": [
+      "./src/theme/*.tsx",
+      "./src/theme/*.ts"
     ]
   },
   "scripts": {
@@ -20,12 +24,12 @@
   },
   "dependencies": {
     "@clerk/localizations": "3.8.0",
-    "@clerk/nextjs": "catalog:next15"
+    "@clerk/nextjs": "catalog:next15",
+    "@repo/gql": "workspace:*"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@tanstack/react-query-devtools": "catalog:deps",
     "@types/node": "catalog:dev-deps",
     "@types/react": "catalog:react19",
     "eslint": "catalog:dev-deps",

@@ -15,13 +15,18 @@ import * as types from './graphql';
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
-    "\n    query GetNegozi {\n      Stores {\n        docs {\n          name\n          address\n          city\n        }\n      }\n    }\n  ": types.GetNegoziDocument,
+    "\n  query GetStore($id: Int!) {\n    Store(id: $id) {\n      id\n      name\n    }\n  }\n  ": types.GetStoreDocument,
+    "\n    query GetNegozi {\n      Stores {\n        docs {\n          id\n          name\n        }\n      }\n    }\n  ": types.GetNegoziDocument,
 };
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n    query GetNegozi {\n      Stores {\n        docs {\n          name\n          address\n          city\n        }\n      }\n    }\n  "): typeof import('./graphql').GetNegoziDocument;
+export function graphql(source: "\n  query GetStore($id: Int!) {\n    Store(id: $id) {\n      id\n      name\n    }\n  }\n  "): typeof import('./graphql').GetStoreDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n    query GetNegozi {\n      Stores {\n        docs {\n          id\n          name\n        }\n      }\n    }\n  "): typeof import('./graphql').GetNegoziDocument;
 
 
 export function graphql(source: string) {

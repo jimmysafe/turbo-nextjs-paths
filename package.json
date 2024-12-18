@@ -4,6 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev --env-mode=loose",
+    "dev:admin": "pnpm --filter admin dev",
     "clean": "rm -rf .next && rm -rf .turbo && turbo clean",
     "lint": "turbo lint",
     "ui": "pnpm --filter @repo/ui ui",

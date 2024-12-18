@@ -14,15 +14,28 @@ export interface Config {
     users: User;
     media: Media;
     stores: Store;
+    organizations: Organization;
+    landings: Landing;
+    'landing-categories': LandingCategory;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    organizations: {
+      stores: 'stores';
+    };
+    'landing-categories': {
+      landings: 'landings';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     stores: StoresSelect<false> | StoresSelect<true>;
+    organizations: OrganizationsSelect<false> | OrganizationsSelect<true>;
+    landings: LandingsSelect<false> | LandingsSelect<true>;
+    'landing-categories': LandingCategoriesSelect<false> | LandingCategoriesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -67,7 +80,7 @@ export interface User {
   id: number;
   clerkId?: string | null;
   Nome?: string | null;
-  roles: 'user' | 'admin';
+  roles: 'admin' | 'imprenditore' | 'collaboratore' | 'store';
   updatedAt: string;
   createdAt: string;
   enableAPIKey?: boolean | null;
@@ -100,6 +113,64 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    square?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    small?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    og?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -107,11 +178,169 @@ export interface Media {
  */
 export interface Store {
   id: number;
-  name?: string | null;
-  address?: string | null;
-  city?: string | null;
+  organization: number | Organization;
+  name: string;
+  sub: string;
+  vetrinaType: 'full' | 'lite';
+  foto?: (number | null) | Media;
+  assicurazioniText?: string | null;
+  numeroPdv: string;
+  bisuiteDomain?: ('bisuite.it' | 'w01.bisuite.it') | null;
+  bsid?: string | null;
+  bscc?: string | null;
+  bsds?: string | null;
+  bscal?: string | null;
+  orari?:
+    | {
+        giorno?: ('lun' | 'mar' | 'mer' | 'gio' | 'ven' | 'sab' | 'dom') | null;
+        apertura_1?: string | null;
+        apertura_2?: string | null;
+        chiusura_1?: string | null;
+        chiusura_2?: string | null;
+        aperto?: boolean | null;
+        continuato?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  social_fb?: string | null;
+  social_ig?: string | null;
+  social_yt?: string | null;
+  social_tw?: string | null;
+  social_tt?: string | null;
+  social_gg?: string | null;
+  linkMappa?: string | null;
+  telefono: string;
+  telefonoAlt?: string | null;
+  whatsapp?: string | null;
+  email?: string | null;
+  codiceCentralino?: string | null;
+  analytics_share_id?: string | null;
+  analytics_id?: string | null;
+  indirizzo: string;
+  civico?: string | null;
+  cap: string;
+  citta: string;
+  provincia: string;
+  team?:
+    | {
+        nome: string;
+        ruolo: string;
+        foto?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organizations".
+ */
+export interface Organization {
+  id: number;
+  name: string;
+  partitaIva: string;
+  codiceFiscale: string;
+  imprenditore: number | User;
+  telefono: string;
+  telefonoAlt?: string | null;
+  email: string;
+  pec?: string | null;
+  bscloudir?: string | null;
+  bschv?: string | null;
+  bsSubdirIstanza?: string | null;
+  sedeLegaleIndirizzo?: string | null;
+  sedeLegaleCivico?: string | null;
+  sedeLegaleCap?: string | null;
+  sedeLegaleCitta?: string | null;
+  sedeLegaleProvincia?: string | null;
+  sedeOperativaIndirizzo?: string | null;
+  sedeOperativaCivico?: string | null;
+  sedeOperativaCap?: string | null;
+  sedeOperativaCitta?: string | null;
+  sedeOperativaProvincia?: string | null;
+  stores?: {
+    docs?: (number | Store)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landings".
+ */
+export interface Landing {
+  id: number;
+  name: string;
+  category: number | LandingCategory;
+  type: 'landing' | 'proponi' | 'landing custom';
+  stato: 'in attesa' | 'non approvato' | 'approvato';
+  negozio?: (number | null) | Store;
+  layout: (StickyBarBlock | HeroLandingBlock)[];
+  forceCarosello?: boolean | null;
+  forceEvidenza?: boolean | null;
+  meta?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-categories".
+ */
+export interface LandingCategory {
+  id: number;
+  name: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  landings?: {
+    docs?: (number | Landing)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StickyBarBlock".
+ */
+export interface StickyBarBlock {
+  text: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'sticky-bar';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroLandingBlock".
+ */
+export interface HeroLandingBlock {
+  title: string;
+  subtitle: string;
+  image: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero-landing';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -131,6 +360,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'stores';
         value: number | Store;
+      } | null)
+    | ({
+        relationTo: 'organizations';
+        value: number | Organization;
+      } | null)
+    | ({
+        relationTo: 'landings';
+        value: number | Landing;
+      } | null)
+    | ({
+        relationTo: 'landing-categories';
+        value: number | LandingCategory;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -212,15 +453,229 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        square?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        small?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        medium?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        large?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        xlarge?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        og?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "stores_select".
  */
 export interface StoresSelect<T extends boolean = true> {
+  organization?: T;
   name?: T;
-  address?: T;
-  city?: T;
+  sub?: T;
+  vetrinaType?: T;
+  foto?: T;
+  assicurazioniText?: T;
+  numeroPdv?: T;
+  bisuiteDomain?: T;
+  bsid?: T;
+  bscc?: T;
+  bsds?: T;
+  bscal?: T;
+  orari?:
+    | T
+    | {
+        giorno?: T;
+        apertura_1?: T;
+        apertura_2?: T;
+        chiusura_1?: T;
+        chiusura_2?: T;
+        aperto?: T;
+        continuato?: T;
+        id?: T;
+      };
+  social_fb?: T;
+  social_ig?: T;
+  social_yt?: T;
+  social_tw?: T;
+  social_tt?: T;
+  social_gg?: T;
+  linkMappa?: T;
+  telefono?: T;
+  telefonoAlt?: T;
+  whatsapp?: T;
+  email?: T;
+  codiceCentralino?: T;
+  analytics_share_id?: T;
+  analytics_id?: T;
+  indirizzo?: T;
+  civico?: T;
+  cap?: T;
+  citta?: T;
+  provincia?: T;
+  team?:
+    | T
+    | {
+        nome?: T;
+        ruolo?: T;
+        foto?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organizations_select".
+ */
+export interface OrganizationsSelect<T extends boolean = true> {
+  name?: T;
+  partitaIva?: T;
+  codiceFiscale?: T;
+  imprenditore?: T;
+  telefono?: T;
+  telefonoAlt?: T;
+  email?: T;
+  pec?: T;
+  bscloudir?: T;
+  bschv?: T;
+  bsSubdirIstanza?: T;
+  sedeLegaleIndirizzo?: T;
+  sedeLegaleCivico?: T;
+  sedeLegaleCap?: T;
+  sedeLegaleCitta?: T;
+  sedeLegaleProvincia?: T;
+  sedeOperativaIndirizzo?: T;
+  sedeOperativaCivico?: T;
+  sedeOperativaCap?: T;
+  sedeOperativaCitta?: T;
+  sedeOperativaProvincia?: T;
+  stores?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landings_select".
+ */
+export interface LandingsSelect<T extends boolean = true> {
+  name?: T;
+  category?: T;
+  type?: T;
+  stato?: T;
+  negozio?: T;
+  layout?:
+    | T
+    | {
+        'sticky-bar'?: T | StickyBarBlockSelect<T>;
+        'hero-landing'?: T | HeroLandingBlockSelect<T>;
+      };
+  forceCarosello?: T;
+  forceEvidenza?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StickyBarBlock_select".
+ */
+export interface StickyBarBlockSelect<T extends boolean = true> {
+  text?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroLandingBlock_select".
+ */
+export interface HeroLandingBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  image?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-categories_select".
+ */
+export interface LandingCategoriesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  slugLock?: T;
+  landings?: T;
   updatedAt?: T;
   createdAt?: T;
 }

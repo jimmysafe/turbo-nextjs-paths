@@ -11,11 +11,9 @@ async function createClerkUser(payloadUser: any) {
       emailAddress: [payloadUser.email],
       password: payloadUser.password,
       skipPasswordChecks: true,
-      privateMetadata: {
-        payloadKey: payloadUser.apiKey,
-      },
       publicMetadata: {
         roles: payloadUser.roles,
+        payloadKey: payloadUser.apiKey,
       },
     });
 
@@ -32,10 +30,8 @@ async function updateClerkUser(payloadUser: any) {
     const client = await clerkClient();
 
     await client.users.updateUser(payloadUser.clerkId, {
-      privateMetadata: {
-        payloadKey: payloadUser.apiKey,
-      },
       publicMetadata: {
+        payloadKey: payloadUser.apiKey,
         roles: payloadUser.roles,
       },
     });
@@ -101,12 +97,28 @@ export const Users: CollectionConfig = {
       saveToJWT: true,
       defaultValue: "admin",
       options: [
-        { label: "User", value: "user" },
         { label: "Admin", value: "admin" },
+        { label: "Imprenditore", value: "imprenditore" },
+        { label: "Collaboratore", value: "collaboratore" },
+        { label: "Store", value: "store" },
       ],
       required: true,
     },
-    // Email added by default
-    // Add more fields as needed
+    // {
+    //   label: "Negozio",
+    //   name: "store",
+    //   required: true,
+    //   admin: {
+    //     condition: (_, { roles } = {}) => ['store'].includes(roles),
+    //   },
+    // },
+    // {
+    //   label: "Ragione Sociale",
+    //   name: "organization",
+    //   required: true,
+    //   admin: {
+    //     condition: (_, { roles } = {}) => ['collaboratore'].includes(roles),
+    //   },
+    // },
   ],
 };

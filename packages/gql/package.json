@@ -2,7 +2,7 @@
   "name": "@repo/gql",
   "exports": {
     "./generated/*": "./src/generated/*.ts",
-    "./exec": "./src/gql-execute.ts"
+    "./execute/*": "./src/execute/*.ts"
   },
   "scripts": {
     "lint": "eslint . --fix",

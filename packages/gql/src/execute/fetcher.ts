@@ -1,18 +1,17 @@
-import type { TypedDocumentString } from "./generated/graphql";
-import { currentUser } from "@clerk/nextjs/server";
+import type { TypedDocumentString } from "../generated/graphql";
 
-export async function execute<TResult, TVariables>(
+export async function fetcher<TResult, TVariables>(
+  payloadToken: string,
   query: TypedDocumentString<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ) {
-  const user = await currentUser();
   // eslint-disable-next-line node/no-process-env
-  const response = await fetch(`${process.env.PAYLOAD_URL}/api/graphql`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/graphql-response+json",
-      "Authorization": `users API-Key ${user?.privateMetadata.payloadKey}`,
+      "Authorization": `users API-Key ${payloadToken}`,
     },
     body: JSON.stringify({
       query,
